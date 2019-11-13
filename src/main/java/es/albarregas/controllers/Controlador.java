@@ -49,19 +49,19 @@ public class Controlador extends HttpServlet {
                 ArrayList<Alumno> alumnosYequipos = adao.getAlumnosEquipo();
 
                 request.setAttribute("alumnosYequipos", alumnosYequipos);
-                url = "JSP/listaEquiposAlumnos.jsp";
+                url = "../JSP/listaEquiposAlumnos.jsp";
             } else {
                 DAOFactory daof = DAOFactory.getDAOFactory(1);
                 IAlumnosDAO odao = daof.getAlumnosDAO();
                 ArrayList<Alumno> alumnos = odao.getAlumnos(clausulaWhere);
 
                 request.setAttribute("alumnos", alumnos);
-                url = "JSP/listaAlumnos.jsp";
+                url = "../JSP/listaAlumnos.jsp";
             }
             
         } else {
             request.setAttribute("error", "No se han pasado parámetros");
-            url = "JSP/error.jsp";
+            url = "../JSP/error.jsp";
         }
 
         request.getRequestDispatcher(url).forward(request, response);
